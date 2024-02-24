@@ -1,43 +1,270 @@
-# singingcactus.io
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website Title</title> 
-    <link rel="stylesheet" href="style.css">
+    <title>Nihon Nirvana 🎀</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+
+
+
+
+	       /* Style for the Translate button */
+        #translateButton {
+            background-color: #007bff; /* Blue color */
+            color: #fff; /* White text color */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        #translateButton:hover {
+            background-color: #0056b3; /* Darker blue color on hover */
+        }
+
+
+
+	   
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            position: fixed;
+            bottom: -50px; /* Initially hide footer below the page */
+            width: 100%;
+            transition: bottom 0.3s; /* Smooth transition for showing/hiding footer */
+        }
+        footer p {
+            margin: 0;
+        }
+        .character-container {
+            text-align: center;
+            display: flex;
+            justify-content: space-between; /* Spread items evenly */
+            align-items: center; /* Align items vertically */
+            margin-bottom: 20px; /* Add margin at the bottom */
+        }
+        .character-img {
+            max-width: 200px; /* Adjust the size as needed */
+            height: auto;
+            border-radius: 50%;
+            position: relative;
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+        .character-img:hover {
+            transform: scale(1.1); /* Increase size on hover */
+        }
+          .comment-bubble {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            text-align: center;
+            display: none; /* Hide initially */
+            clip-path: polygon(10% 0%, 90% 0%, 100% 40%, 100% 90%, 90% 100%, 50% 90%, 10% 100%, 0% 90%, 0% 40%);
+        }
+        .character-img:hover + .comment-bubble {
+            display: block; /* Show comment bubble on hover */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Your Name</h1>
+        <h1>Welcome to Nihon Nirvana </h1>
+        <!--<h2> A site to explore Indo-Japanese cultures!</h2>-->
         <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
+             <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="lang.html">Languages</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+
+	           <!-- Add Translate button here -->
+        <button id="translateButton">Jap</button>
+
+
     </header>
     
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Write a brief introduction about yourself here.</p>
-    </section>
+    <main>
+        <section id="home">
+            <h1>Home 🎎</h1>
+
+
+    <style>
+        /* Additional CSS for styling the introduction */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+         {
+            margin-bottom: 20px;
+        }
+    </style>
+
+<body>
     
-    <section id="portfolio">
-        <h2>My Portfolio</h2>
-        <!-- Add your digital art or project images here -->
-        <!-- Example: <img src="artwork.jpg" alt="Artwork Title"> -->
+   <main>
+        <section id="introduction">
+            <h2>About Us</h2>
+            <p>Embark on a journey of cultural exploration and friendship as we bridge the gap between India and Japan! At NIHON NIRVANA, we're passionate about creating a platform where individuals from both countries can come together to learn, share, and celebrate each other's rich heritage, traditions, and customs.</p>
+            <p>Through captivating art galleries, insightful language resources, and interactive quizzes, we strive to deepen your understanding of the vibrant cultures of India and Japan. Whether you're fascinated by the intricate beauty of Indian sarees or intrigued by the elegance of Japanese calligraphy, there's something here to spark your curiosity.</p>
+            <p>Our mission extends beyond mere appreciation; we aim to foster meaningful connections and dialogue between people of diverse backgrounds. By promoting cultural exchange and mutual respect, we hope to build bridges of friendship that transcend geographical boundaries.</p>
+            <p>Join us on this exhilarating voyage of discovery as we unravel the mysteries, traditions, and wonders of India and Japan together. Let's embark on a journey of mutual understanding, respect, and friendship!</p>
+        </section>
+    </main>
+    <!-- Japanese Translation -->
+    <section id="introduction-japanese">
+        <h2>私たちについて</h2>
+        <p>インドと日本の間の溝を埋めることで、文化的な探求と友情の旅に乗り出しましょう！NIHON NIRVANAでは、両国の個々の人々が集まって学び、共有し、お互いの豊かな遺産、伝統、習慣を祝うプラットフォームを作り出すことに情熱を注いでいます。</p>
+        <p>魅力的なアートギャラリー、洞察に富んだ言語リソース、インタラクティブなクイズを通じて、私たちはインドと日本の活気ある文化に対する理解を深めることを目指しています。インドのサリーの複雑な美しさに魅了されるか、日本の書道の優雅さに興味を持つかにかかわらず、ここにはあなたの好奇心を刺激するものがあります。</p>
+        <p>私たちの使命は、単なる鑑賞以上のものです。我々は、多様なバックグラウンドを持つ人々との意義のあるつながりと対話を促進することを目指しています。文化的な交流と相互尊重を促進することで、地理的な境界を超えた友情の架け橋を築くことを願っています。</p>
+        <p>私たちと一緒に、インドと日本の謎、伝統、驚異を一緒に解き明かすこのエキサイティングな発見の旅に参加してください。互いの理解、尊重、友情の旅に乗り出しましょう！</p>
     </section>
+
+
+<!--Intro of charS-->
+<strong> <h2> Here are Maya and Akira , who would help u Exploring!!!</h2> </strong>
+
+
+
+
+
+
+		  
+            <div class="character-container">
+                <div style="position: relative; flex: 1;">
+                    <img src="jap2_char.jpeg" alt="Japanese Character" class="character-img">
+                    <div class="comment-bubble">
+                        <p>Meet Akira, Your Cultural Navigator! 🇯🇵</p>
+                        <p>こんにちは! アキラです、 your guide to Japan's wonders. Let's uncover the secrets of Japan together!</p>
+                    </div>
+                </div>
+                <div style="position: relative; flex: 1;">
+                    <img src="ind_character.jpeg" alt="Indian Character" class="character-img">
+                    <div class="comment-bubble">
+                        <p>Meet Maya, Your Guide!🇮🇳 </p>
+				    <p>I'm Maya, your friendly guide to Indian culture.🌟Get ready to discover the beauty and diversity of India.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+	   
+    </main>
+
+
     
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Email: your@email.com</p>
-        <p>Phone: (123) 456-7890</p>
-    </section>
-    
+
     <footer>
-        <p>&copy; 20XX Your Name</p>
+        <!-- Footer content -->
+        <p>&copy; 2024 Nihon Nirvana. All rights reserved.</p>
     </footer>
+
+    <section id="quiz" style="display:none;">
+        <!-- Events section content -->
+        <h2>Quizes</h2>
+        <p>List upcoming quizes related to cultural exploration.</p>
+    </section>
+    <section id="languages" style="display:none;">
+    <!--content of languages sec-->
+    </section>
+    <section id="contact" style="display:none;">
+        <!-- Contact section content -->
+        <h2>Contact Us</h2>
+        <p>Provide contact information for inquiries and feedback.</p>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('quiz-link').addEventListener("click", function(event) {
+                event.preventDefault();
+                document.getElementById('quiz').style.display = 'block';
+                document.getElementById('home').style.display = 'none';
+            });
+
+            document.getElementById('languages-link').addEventListener("click", function(event) {
+                event.preventDefault();
+                document.getElementById('languages').style.display = 'block';
+                document.getElementById('home').style.display = 'none';
+            });
+
+            document.getElementById('contact-link').addEventListener("click", function(event) {
+                event.preventDefault();
+                document.getElementById('contact').style.display = 'block';
+                document.getElementById('home').style.display = 'none';
+            });
+
+            window.addEventListener('scroll', function() {
+                var footer = document.querySelector('footer');
+                if (window.scrollY > 100) {
+                    footer.style.bottom = '0';
+                } else {
+                    footer.style.bottom = '-50px';
+                }
+            });
+        });
+
+
+
+	   // Add event listener to the Translate button
+        document.getElementById("translateButton").addEventListener("click", translateWebsite);
+
+        // Function to handle translation
+        function translateWebsite() {
+            // Your translation logic goes here
+            // You can use a translation API or a custom dictionary to translate the content
+            // Update the content of your website accordingly
+        }
+
+
+	   
+    </script>
 </body>
 </html>

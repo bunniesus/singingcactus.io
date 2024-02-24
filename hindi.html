@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 🎲 </title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional CSS specific to the quiz page */
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style for the header section */
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Navigation style */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Quiz container style */
+        #quiz-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Style for question and options */
+        #question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #options button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #options button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for result message */
+        #result {
+            font-size: 24px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        /* Style for score bubble */
+        #score-bubble {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #score-bubble img {
+            width: 200px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        #score-bubble p {
+            font-size: 36px;
+            margin: 0;
+        }
+
+
+
+	   #nextBtn {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+
+        /* Style for end quiz button */
+        #endQuizBtn {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #endQuizBtn:hover {
+            background-color: #c82333;
+        }
+
+        /* Style for OK button */
+        #okBtn {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #okBtn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header section -->
+    <header>
+        <h1>Quiz 🎲 </h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="languages.html">Languages</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="quiz-container">
+            <h2>Hindi Quiz</h2>
+            <div id="question"></div>
+            <ul id="options"></ul>
+            <button id="nextBtn" onclick="nextQuestion()">Next Question</button>
+            <p id="result"></p>
+            <div id="score-bubble">
+                <button id="okBtn" onclick="hideCharacter()">OK</button>
+                <img src="ind2_char.jpeg" alt="Hindi Character">
+                <p id="final-score"></p>
+            </div>
+            <button id="endQuizBtn" onclick="endQuiz()">End Quiz</button>
+        </div>
+    </main>
+
+    <script>
+
+//QUIZ SECTION
+    
+        const quizData = [
+            {
+                question: "नमस्ते means?",
+                options: ["Goodbye", "Hello", "Thank you", "Sorry"],
+                correctAnswer: "Hello"
+           },
+           {
+        question: "नमस्ते means?",
+        options: ["Goodbye", "Hello", "Thank you", "Sorry"],
+        correctAnswer: "Hello"
+    },
+    {
+        question: "शुभ प्रभात means?",
+        options: ["Goodbye", "Hello", "Good morning", "Thank you"],
+        correctAnswer: "Good morning"
+    },
+    {
+        question: "कृपया means?",
+        options: ["Welcome", "Please", "Excuse me", "Thank you"],
+        correctAnswer: "Please"
+    },
+    {
+        question: "धन्यवाद means?",
+        options: ["Goodbye", "Hello", "Excuse me", "Thank you"],
+        correctAnswer: "Thank you"
+    },
+    {
+        question: "खुशी means?",
+        options: ["Happiness", "Sadness", "Anger", "Fear"],
+        correctAnswer: "Happiness"
+    },
+    {
+        question: "प्यार means?",
+        options: ["Love", "Hate", "Fear", "Excitement"],
+        correctAnswer: "Love"
+    },
+    {
+        question: "आप कैसे हैं? means?",
+        options: ["How are you?", "What's your name?", "Where are you?", "Thank you"],
+        correctAnswer: "How are you?"
+    },
+    {
+        question: "मुझे यह नहीं पसंद है means?",
+        options: ["I love this", "I hate this", "I like this", "I want this"],
+        correctAnswer: "I don't like this"
+    },
+    {
+        question: "मुझे भूख लगी है means?",
+        options: ["I'm thirsty", "I'm hungry", "I'm tired", "I'm cold"],
+        correctAnswer: "I'm hungry"
+    }
+
+		 
+		  
+
+		
+            // Add more quiz questions...
+        
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+                document.getElementById("result").style.display = "none";
+            } else {
+                showResult();
+            }
+        }
+
+        function loadQuestion() {
+            const questionElement = document.getElementById("question");
+            const optionsElement = document.getElementById("options");
+            const question = quizData[currentQuestion].question;
+            const options = quizData[currentQuestion].options;
+
+            questionElement.innerHTML = question;
+            optionsElement.innerHTML = "";
+
+            for (let i = 0; i < options.length; i++) {
+                const option = options[i];
+                const li = document.createElement("li");
+                const button = document.createElement("button");
+                button.innerText = option;
+                button.addEventListener("click", () => checkAnswer(option));
+                li.appendChild(button);
+                optionsElement.appendChild(li);
+            }
+        }
+
+        function checkAnswer(selectedOption) {
+            const correctAnswer = quizData[currentQuestion].correctAnswer;
+            if (selectedOption === correctAnswer) {
+                score++;
+            }
+            if (currentQuestion === quizData.length - 1) {
+                showResult();
+            } else {
+                nextQuestion();
+            }
+        }
+
+        function showResult() {
+            const resultElement = document.getElementById("result");
+            const finalScoreElement = document.getElementById("final-score");
+            const scoreBubble = document.getElementById("score-bubble");
+
+            resultElement.innerText = `Your Score: ${score}`;
+            resultElement.style.display = "none";
+
+            // Show character popup with score
+            scoreBubble.style.display = "block";
+            scoreBubble.innerHTML = `<button id="okBtn" onclick="hideCharacter()">YAY!</button><img src="ind2_char.jpeg" alt="Hindi Character" style="width: 200px;"><p id="final-score">${score}</p>`;
+        }
+
+        function hideCharacter() {
+            document.getElementById("score-bubble").style.display = "none";
+        }
+
+        function endQuiz() {
+            alert("Quiz ended!");
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 🎲 </title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional CSS specific to the gallery page */
+        body {
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Style for the header section */
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Navigation style */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+	 </style>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nihongo Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Quiz 🎲 </h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="quizzes.html">Quizzes</a></li> <!-- Link back to Quizzes Menu -->
+                <li><a href="lang.html">Languages</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="quiz-container">
+            <h2>Japanese Quiz</h2>
+            <div id="question"></div>
+            <ul id="options"></ul>
+            <button id="nextBtn" onclick="nextQuestion()">Next Question</button>
+            <p id="result" style="display: none;"></p>
+            <p id="score">Score: 0</p>
+            <label>
+                <input type="checkbox" id="toggleRomaji"> Show Romaji
+            </label>
+        </div>
+        <div id="character-popup" style="display: none;">
+            <img src="jap2.jpeg" alt="Japanese Character">
+            <p>Your Score: <span id="final-score">0</span></p>
+        </div>
+    </main>
+
+    <script>
+        const quizData = [
+            {
+                question: "こんにちは means?",
+                options: ["Goodbye", "Hello", "Thank you", "Sorry"],
+                correctAnswer: "Hello"
+            },
+            {
+                question: "おはようございます means?",
+                options: ["Goodbye", "Hello", "Good morning", "Thank you"],
+                correctAnswer: "Good morning"
+            },
+
+		{
+                question: "How do you say 'Excuse me' in Japanese when trying to get someone's attention?",
+                options: ["すみません (Sumimasen)", "おはようございます (Ohayō gozaimasu)", "ありがとう (Arigatō)", "ごめんなさい (Gomen nasai)"],
+                correctAnswer: "すみません (Sumimasen)"
+            },
+            {
+                question: "What is the Japanese word for 'Yes'?",
+                options: ["はい (Hai)", "いいえ (Iie)", "そう (Sō)", "ちがう (Chigau)"],
+                correctAnswer: "はい (Hai)"
+            },
+            {
+                question: "How do you say 'I'm sorry' in Japanese?",
+                options: ["ありがとう (Arigatō)", "ごめんなさい (Gomen nasai)", "おはようございます (Ohayō gozaimasu)", "こんばんは (Konbanwa)"],
+                correctAnswer: "ごめんなさい (Gomen nasai)"
+            },
+            {
+                question: "What does 'さようなら' (Sayōnara) mean in English?",
+                options: ["Goodbye", "Hello", "Thank you", "Sorry"],
+                correctAnswer: "Goodbye"
+            },
+            {
+                question: "What is the Japanese word for 'No'?",
+                options: ["はい (Hai)", "いいえ (Iie)", "そう (Sō)", "ちがう (Chigau)"],
+                correctAnswer: "いいえ (Iie)"
+            },
+            {
+                question: "How do you say 'Please' in Japanese?",
+                options: ["ありがとう (Arigatō)", "どうぞ (Dōzo)", "お願いします (Onegaishimasu)", "すみません (Sumimasen)"],
+                correctAnswer: "お願いします (Onegaishimasu)"
+            },
+            {
+                question: "What does 'おはようございます' (Ohayō gozaimasu) mean in English?",
+                options: ["Good morning", "Good afternoon", "Good evening", "Goodbye"],
+                correctAnswer: "Good morning"
+            }
+            // Add more questions here...
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let showRomaji = false;
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+                document.getElementById("result").style.display = "none";
+            } else {
+                showCharacterPopup();
+            }
+        }
+
+        function loadQuestion() {
+            const questionElement = document.getElementById("question");
+            const optionsElement = document.getElementById("options");
+            const question = quizData[currentQuestion].question;
+            const options = quizData[currentQuestion].options;
+
+            questionElement.innerHTML = question;
+            optionsElement.innerHTML = "";
+
+            for (let i = 0; i < options.length; i++) {
+                const option = options[i];
+                const li = document.createElement("li");
+                const button = document.createElement("button");
+                button.innerText = showRomaji ? option : "";
+                button.addEventListener("click", () => checkAnswer(option));
+                li.appendChild(button);
+                optionsElement.appendChild(li);
+            }
+        }
+
+        function checkAnswer(selectedOption) {
+            const correctAnswer = quizData[currentQuestion].correctAnswer;
+            if (selectedOption === correctAnswer) {
+                score++;
+                document.getElementById("result").innerText = "Correct!";
+            } else {
+                document.getElementById("result").innerText = "Incorrect!";
+            }
+            document.getElementById("result").style.display = "block";
+            document.getElementById("score").innerText = `Score: ${score}`;
+        }
+
+        function showCharacterPopup() {
+            document.getElementById("quiz-container").style.display = "none";
+            document.getElementById("character-popup").style.display = "block";
+            document.getElementById("final-score").innerText = score;
+        }
+
+        document.getElementById("toggleRomaji").addEventListener("change", function() {
+            showRomaji = this.checked;
+            loadQuestion();
+        });
+
+        loadQuestion();
+    </script>
+</body>
+</html>
